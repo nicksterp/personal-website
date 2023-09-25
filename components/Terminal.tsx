@@ -28,8 +28,7 @@ const Terminal: React.FC<TerminalProps> = () => {
 
         const commandOutput = parseInput(input, currentFolder, setCurrentFolder);
 
-        const isScrolledToBottom = preRef.current?.scrollHeight - preRef.current?.scrollTop === preRef.current?.clientHeight;
-        // Handle 'clear': empty commandOutput
+        const isScrolledToBottom = preRef.current && preRef.current.scrollHeight - preRef.current.scrollTop === preRef.current.clientHeight;        // Handle 'clear': empty commandOutput
         if (commandOutput.length == 0) {
             setOutput([]);
         }
