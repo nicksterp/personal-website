@@ -34,6 +34,7 @@ export const aboutFolder: Folder = {
     name: 'about',
     children: []
 }
+rootFolder.children.push(aboutFolder);
 
 const resume: File = {
     parent: aboutFolder,
@@ -102,7 +103,8 @@ const genie: File = {
         'Technologies used:\n' +
         '\tBackend: Python, Flask, Docker, AWS (Elastic Beanstalk, Lambda, DynamoDB)\n' +
         '\tFrontend: NextJS, Typescript, Tailwind CSS\n' +
-        '\tApps: SwiftUI, Java\n'
+        '\tApps: SwiftUI, Java\n\n' +
+        'https://vercel.com/nicolaspatil/geniewebsite/EUaJGP1BtVvjy4ZZqX7UPwZjS8wp\n'
 }
 projects.children.push(genie);
 
