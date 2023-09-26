@@ -21,7 +21,7 @@ export const commands: Record<string, Command> = {
 
         if (currentFolder.children.find((child) => child.name == args[0])) {
             const file = currentFolder.children.find((child) => child.name == args[0]) as File;
-            return file.content
+            return [{ text: `cat: ${args[0]}:\n`, color: 'text-green-400' }, ...file.content]
         } else {
             return (
                 [
