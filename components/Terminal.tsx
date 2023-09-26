@@ -43,6 +43,7 @@ const Terminal: React.FC<TerminalProps> = () => {
         // Handle 'clear': empty commandOutput
         if (commandOutput.length == 0) {
             setOutput([]);
+            setInput('');
         }
         // Handle 'wget':
         if (commandOutput[0].text == 'wget: ') {
