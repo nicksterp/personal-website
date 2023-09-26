@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { parseInput } from '@/components/terminalLogic';
 import { rootFolder } from '@/components/fileTree';
 import { commands } from '@/components/commands';
+
 interface TerminalProps {
     // Props go here
 }
@@ -31,9 +32,21 @@ const Terminal: React.FC<TerminalProps> = () => {
 
         const commandOutput = parseInput(input, currentFolder, setCurrentFolder);
 
-        const isScrolledToBottom = preRef.current && preRef.current.scrollHeight - preRef.current.scrollTop === preRef.current.clientHeight;        // Handle 'clear': empty commandOutput
+        const isScrolledToBottom = preRef.current && preRef.current.scrollHeight - preRef.current.scrollTop === preRef.current.clientHeight;
+
+        // Handle 'clear': empty commandOutput
         if (commandOutput.length == 0) {
             setOutput([]);
+        }
+        // Handle 'wget':
+        if (commandOutput[0].text == 'wget') {
+            // Handle 'wget':
+            if (commandOutput[1].text == 'resume.pdf') {
+                window.location.href = '/resume.pdf';
+            }
+            else {
+                setOutput([...output, ...commandOutput]);
+            }
         }
         else {
             setOutput([...output, ...commandOutput]);

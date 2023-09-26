@@ -15,7 +15,7 @@ export default function Home() {
       <Terminal />
 
       <div className="flex justify-center space-x-8">
-        <a href="https://github.com/nicolaspatil">
+        <a href="https://github.com/nicksterp">
           <FaGithub size={32} />
         </a>
         <Link href="/resume.pdf" locale={false}>

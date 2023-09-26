@@ -186,5 +186,22 @@ export const commands: Record<string, Command> = {
                 )
             }
         }
-    }
+    },
+    //'wget': (args: string[]): TextOutput[] => { },
+    'wget': (args: string[]): TextOutput[] => {
+        if (args.length != 1) {
+            return (
+                [
+                    { text: 'wget: ', color: 'text-red-400' },
+                    { text: 'missing operand\n', color: 'text-white' }
+                ]
+            )
+        }
+        return (
+            [
+                { text: `wget`, color: 'text-white' },
+                { text: `${args[0]}`, color: 'text-white' }
+            ]
+        )
+    },
 }
