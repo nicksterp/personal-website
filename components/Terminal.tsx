@@ -46,7 +46,7 @@ const Terminal: React.FC<TerminalProps> = () => {
             setInput('');
         }
         // Handle 'wget':
-        if (commandOutput[0].text == 'wget: ') {
+        else if (commandOutput[0].text == 'wget: ') {
             // Handle 'wget':
             if (commandOutput[1].text == 'resume.pdf') {
                 window.location.href = '/resume.pdf';
