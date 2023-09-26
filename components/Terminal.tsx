@@ -23,6 +23,7 @@ const Terminal: React.FC<TerminalProps> = () => {
     const [commandHistoryIndex, setCommandHistoryIndex] = useState<number>(0)
     const preRef = useRef<HTMLPreElement>(null);
     const isMobile = window.innerWidth < 640;
+    console.log(isMobile)
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInput(event.target.value);
@@ -139,7 +140,7 @@ const Terminal: React.FC<TerminalProps> = () => {
                     onKeyDown={handleInputKeyDown}
                     onKeyUp={handleInputKeyUp}
                     className="bg-transparent outline-none border-none ml-1 text-white w-full whitespace-normal"// screensize }
-                    autoFocus={isMobile}
+                    autoFocus={!isMobile}
                 />
             </form>
         </div>
