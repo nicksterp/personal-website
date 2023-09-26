@@ -109,8 +109,8 @@ export const commands: Record<string, Command> = {
                 )
             }
         }
-
-        if (currentFolder.children.find((child) => child.name == args[0])) {
+        const folder = currentFolder.children.find((child) => child.name == args[0])
+        if (folder && 'children' in folder) {
             const folder = currentFolder.children.find((child) => child.name == args[0]) as Folder;
             // set currentFolder to folder
             setCurrentFolder(folder);
@@ -124,7 +124,10 @@ export const commands: Record<string, Command> = {
             return (
                 [
                     { text: 'cd: ', color: 'text-red-400' },
-                    { text: `${args[0]}: No such file or directory\n`, color: 'text-white' }
+                    {
+                        text: `${args[0]
+                            }: argument must be a folder\n`, color: 'text-white'
+                    }
                 ]
             )
         }
@@ -199,8 +202,9 @@ export const commands: Record<string, Command> = {
         }
         return (
             [
-                { text: `wget`, color: 'text-white' },
-                { text: `${args[0]}`, color: 'text-white' }
+                { text: `wget: `, color: 'text-red-400' },
+                { text: `${args[0]} `, color: 'text-white' },
+                { text: ` not found\n`, color: 'text-red-400' },
             ]
         )
     },
