@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 
-import { FaGithub, FaTwitter, FaFileAlt } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaFileAlt, FaEnvelope } from 'react-icons/fa';
 
 export default function Home() {
   return (
@@ -26,6 +26,10 @@ export default function Home() {
         <Link href="/resume.pdf" locale={false}>
           <FaFileAlt size={32} />
         </Link>
+        {/*@ symbol from icons with link to email*/}
+        <a href="mailto:nicolas.a.patil@gmail.com">
+          <FaEnvelope size={32} />
+        </a>
       </div>
     </main>
   )
