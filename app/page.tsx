@@ -1,5 +1,6 @@
 import Terminal from '@/components/Terminal';
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 import { FaGithub, FaTwitter, FaFileAlt } from 'react-icons/fa';
@@ -14,15 +15,12 @@ export default function Home() {
       <Terminal />
 
       <div className="flex justify-center space-x-8">
-        <a href="https://github.com/your-github-username">
+        <a href="https://github.com/nicolaspatil">
           <FaGithub size={32} />
         </a>
-        <a href="https://twitter.com/your-twitter-username">
-          <FaTwitter size={32} />
-        </a>
-        <a href="https://your-resume-url.com">
+        <Link href="/resume.pdf" locale={false}>
           <FaFileAlt size={32} />
-        </a>
+        </Link>
       </div>
     </main>
   )

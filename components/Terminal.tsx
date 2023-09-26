@@ -11,7 +11,10 @@ interface TerminalProps {
 const Terminal: React.FC<TerminalProps> = () => {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState([
-        { text: 'Welcome to my website!\n', color: 'text-white' },
+        { text: 'Welcome to my website!\n', color: ' font-bold bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text bg-300% animate-gradient' },
+        { text: 'To begin, try typing\n', color: 'text-white' },
+        { text: 'cat README.txt\n', color: 'text-white font-bold' },
+        { text: '(tip: use tab to autocomplete)\n', color: 'text-xs text-gray-400' }
     ]);
     const [currentFolder, setCurrentFolder] = useState(rootFolder);
     // Stack to represent command history
