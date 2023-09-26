@@ -120,7 +120,7 @@ const Terminal: React.FC<TerminalProps> = () => {
     }
 
     return (
-        <div className="bg-black text-white font-mono p-4 rounded-lg border-white border-2 w-11/12 mx-auto h-[40vh]">
+        <div className="bg-black text-white font-mono p-4 rounded-lg border-white border-2 w-11/12 sm:w-full mx-auto h-[40vh]">
             <div className="mb-2 h-[90%] overflow-y-auto">
                 <pre className="text-green-400 max-h-full overflow-y-auto whitespace-pre-wrap" ref={preRef}>
                     {output.map((line, index) => (

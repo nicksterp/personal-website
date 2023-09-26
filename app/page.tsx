@@ -7,8 +7,8 @@ import { FaGithub, FaTwitter, FaFileAlt, FaEnvelope } from 'react-icons/fa';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className='flex justify-center flex-col'>
+    <main className="flex min-h-screen flex-col items-center justify-between p-8 sm:p-24">
+      <div className='flex justify-center flex-col py-8 sm:py-0'>
         <h1 className="text-4xl font-bold text-center">
           Nicolas Patil
         </h1>
@@ -19,7 +19,7 @@ export default function Home() {
 
       <Terminal />
 
-      <div className="flex justify-center space-x-8">
+      <div className="flex justify-center space-x-8 py-8 sm:py-0">
         <a href="https://github.com/nicksterp">
           <FaGithub size={32} />
         </a>
