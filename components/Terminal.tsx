@@ -22,8 +22,12 @@ const Terminal: React.FC<TerminalProps> = () => {
     const [commandHistory, setCommandHistory] = useState<string[]>([]);
     const [commandHistoryIndex, setCommandHistoryIndex] = useState<number>(0)
     const preRef = useRef<HTMLPreElement>(null);
-    const isMobile = window.innerWidth < 640;
-    console.log(isMobile)
+    const [isMobile, setIsMobile] = useState<boolean>(true);
+
+    React.useEffect(() => {
+        // Check if mobile
+        setIsMobile(window.innerWidth < 640);
+    }, []);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInput(event.target.value);
