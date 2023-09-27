@@ -21,15 +21,23 @@ export const commands: Record<string, Command> = {
 
         if (currentFolder.children.find((child) => child.name == args[0])) {
             const file = currentFolder.children.find((child) => child.name == args[0]) as File;
-            return [{ text: `cat: ${args[0]}:\n`, color: 'text-green-400' }, ...file.content]
-        } else {
-            return (
-                [
-                    { text: `cat: ${args[0]}: `, color: 'text-red-400' },
-                    { text: 'No such file\n', color: 'text-white' }
-                ]
-            )
+            // Check if type of file is File
+            if (!file.content) {
+                return [{ text: `cat: ${args[0]}: `, color: 'text-red-400' }, { text: 'is a directory\n', color: 'text-white' }]
+            } else {
+                return [{ text: `cat: ${args[0]}:\n`, color: 'text-green-400' }, ...file.content]
+            }
         }
+
+        return (
+            [
+                {
+                    text: `cat: ${args[0]
+                        }: `, color: 'text-red-400'
+                },
+                { text: 'No such file\n', color: 'text-white' }
+            ]
+        )
     },
     'ls': (args: string[], currentFolder: Folder): TextOutput[] => {
         if (args.length > 0) {
@@ -47,11 +55,11 @@ export const commands: Record<string, Command> = {
                         else {
                             return (
                                 [
-                                    { text: `\t${child.name}\n`, color: 'text-white' }
+                                    { text: `\t${child.name} \n`, color: 'text-white' }
                                 ]
                             )
                         }
-                    }).reduce((a, b) => a.concat(b), [{ text: `ls ${args[0]}\n`, color: 'text-green-400' }])
+                    }).reduce((a, b) => a.concat(b), [{ text: `ls ${args[0]} \n`, color: 'text-green-400' }])
                 )
             }
             else {
@@ -69,14 +77,14 @@ export const commands: Record<string, Command> = {
                 if ('children' in child) {
                     return (
                         [
-                            { text: `\t${child.name}\n`, color: 'text-blue-400' }
+                            { text: `\t${child.name} \n`, color: 'text-blue-400' }
                         ]
                     )
                 }
                 else {
                     return (
                         [
-                            { text: `\t${child.name}\n`, color: 'text-white' }
+                            { text: `\t${child.name} \n`, color: 'text-white' }
                         ]
                     )
                 }
@@ -116,7 +124,7 @@ export const commands: Record<string, Command> = {
             setCurrentFolder(folder);
             return (
                 [
-                    { text: `cd ${args[0]}\n`, color: 'text-white' }
+                    { text: `cd ${args[0]} \n`, color: 'text-white' }
                 ]
             )
         }
@@ -176,7 +184,7 @@ export const commands: Record<string, Command> = {
                 return (
                     [
                         { text: `${args[0]}: `, color: 'text-green-400' },
-                        { text: `${commandHelp[args[0]]}\n`, color: 'text-white' }
+                        { text: `${commandHelp[args[0]]} \n`, color: 'text-white' }
                     ]
                 )
 
