@@ -33,13 +33,19 @@ const Terminal: React.FC<TerminalProps> = () => {
         setInput(event.target.value);
     };
 
+    // Handle input submission
     const handleInputSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        // Handle empty input
+        if (input == '') {
+            setOutput([...output, { text: '\n', color: 'text-white' }]);
+            return
+        }
 
         const commandOutput = parseInput(input, currentFolder, setCurrentFolder);
 
         const isScrolledToBottom = preRef.current && preRef.current.scrollHeight - preRef.current.scrollTop === preRef.current.clientHeight;
-
         // Handle 'clear': empty commandOutput
         if (commandOutput.length == 0) {
             setOutput([]);
@@ -72,11 +78,14 @@ const Terminal: React.FC<TerminalProps> = () => {
         setInput('');
     };
 
+    // Scroll to bottom of output when it changes
     useEffect(() => {
         // Scroll to bottom of output when it changes
         preRef.current?.scrollTo({ top: preRef.current?.scrollHeight });
     }, [output]);
 
+
+    // Handle up and down arrow keys to cycle through command history
     const handleInputKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
         // Up arrow: next most recent command
         if (event.key == 'ArrowUp' && !event.repeat) {
@@ -103,6 +112,7 @@ const Terminal: React.FC<TerminalProps> = () => {
         }
     }
 
+    // Handle Tab key to autocomplete
     const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         // Prevent Tab key from escaping input field
         if (event.key === 'Tab' && !event.shiftKey) {
