@@ -1,9 +1,8 @@
 import Terminal from '@/components/Terminal';
-import Image from 'next/image'
 import Link from 'next/link'
 
 
-import { FaGithub, FaTwitter, FaFileAlt, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaFileAlt, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
 export default function Home() {
   return (
@@ -19,6 +18,8 @@ export default function Home() {
 
       <Terminal />
 
+      <a href='/info' className='font-medium text-blue-500 hover:underline'>Just want to see my info?</a>
+
       <div className="flex justify-center space-x-8 py-8 sm:py-0">
         <a href="https://github.com/nicksterp">
           <FaGithub size={32} />
@@ -27,8 +28,8 @@ export default function Home() {
           <FaFileAlt size={32} />
         </Link>
         {/*@ symbol from icons with link to email*/}
-        <a href="mailto:nicolas.a.patil@gmail.com">
-          <FaEnvelope size={32} />
+        <a href="https://linkedin.com/in/nicolaspatil">
+          <FaLinkedin size={32} />
         </a>
       </div>
     </main>

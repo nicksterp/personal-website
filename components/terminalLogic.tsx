@@ -16,7 +16,7 @@ export const parseInput = (inputString: string, currentFolder: Folder, setCurren
     const inputArray = inputString.split(' ');
 
     if (inputArray[0] in commands) {
-        // Run command with all arguments after command as parameter
+        // Run command with all arguments after command as parameter()
         const commandOutput = commands[inputArray[0]](inputArray.slice(1), currentFolder, setCurrentFolder);
 
         // Return the output
