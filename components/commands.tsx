@@ -1,4 +1,4 @@
-import { TextOutput, currentFolderSetter } from '@/components/terminalLogic'
+import { TextOutput, currentFolderSetter } from '@/components/Terminal'
 import { Folder, File } from '@/components/fileTree'
 
 export interface Command {
