@@ -1,15 +1,20 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react';
-import { parseInput } from '@/components/terminalLogic';
-import { rootFolder } from '@/components/fileTree';
+import { Folder, rootFolder } from '@/components/fileTree';
 import { commands } from '@/components/commands';
 
-interface TerminalProps {
-    // Props go here
+export interface TextOutput {
+    text: string,
+    color: string,
 }
 
-const Terminal: React.FC<TerminalProps> = () => {
+export interface currentFolderSetter {
+    (folder: Folder): void
+}
+
+
+const Terminal: React.FC = () => {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState([
         { text: 'Welcome to my website!\n', color: ' font-bold bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text bg-300% animate-gradient' },
@@ -18,11 +23,12 @@ const Terminal: React.FC<TerminalProps> = () => {
         { text: '(tip: use tab to autocomplete)\n', color: 'text-xs text-gray-400' }
     ]);
     const [currentFolder, setCurrentFolder] = useState(rootFolder);
-    // Stack to represent command history
     const [commandHistory, setCommandHistory] = useState<string[]>([]);
     const [commandHistoryIndex, setCommandHistoryIndex] = useState<number>(0)
-    const preRef = useRef<HTMLPreElement>(null);
     const [isMobile, setIsMobile] = useState<boolean>(true);
+
+    // Assist in scrolling to bottom of output
+    const preRef = useRef<HTMLPreElement>(null);
 
     React.useEffect(() => {
         // Check if mobile
@@ -134,6 +140,28 @@ const Terminal: React.FC<TerminalProps> = () => {
                 setOutput([...output, ...possibleCompletions.map((completion) => ({ text: completion + ' ', color: 'text-green-400' })), { text: '\n', color: 'text-white' }]);
             };
         }
+    }
+
+    // Parse input, apply command with args, then return output
+    const parseInput = (inputString: string, currentFolder: Folder, setCurrentFolder: currentFolderSetter): TextOutput[] => {
+
+        // Parse input (space separated) into array
+        const inputArray = inputString.split(' ');
+
+        if (inputArray[0] in commands) {
+            // Run command with all arguments after command as parameter()
+            const commandOutput = commands[inputArray[0]](inputArray.slice(1), currentFolder, setCurrentFolder);
+
+            // Return the output
+            return commandOutput
+        };
+
+        return (
+            [
+                { text: `${inputArray[0]}: `, color: 'text-red-400' },
+                { text: 'command not found\n', color: 'text-white' }
+            ]
+        )
     }
 
     return (
