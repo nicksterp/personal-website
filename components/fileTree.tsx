@@ -1,4 +1,4 @@
-import { TextOutput } from '@/components/terminalLogic';
+import { TextOutput } from '@/components/Terminal';
 
 export interface Folder {
     parent: Folder | null,
