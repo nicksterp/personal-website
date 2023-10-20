@@ -154,7 +154,7 @@ export const commands: Record<string, Command> = {
             'clear': 'clear\n\tClear the terminal\n',
             'help': 'help [command]\n\tPrint help for [command]\n',
             'ls': 'ls [directory: optional]\n\tList the contents of [directory]\n',
-            'wget': 'wget [url]\n\tDownload the file at [url]\n',
+            'wget': 'wget [file]\n\tDownload the file at [file]\n',
         }
         if (args.length == 0) {
             return (
@@ -208,6 +208,34 @@ export const commands: Record<string, Command> = {
                 ]
             )
         }
+
+        if (args[0] == "https://www.sterp.dev/resume.pdf" || args[0] == "resume.pdf") {
+            // Use fetch to download resume.pdf from public
+            fetch('https://www.sterp.dev/resume.pdf')
+                .then((response) => response.blob())
+                .then((blob) => {
+                    // Create a new blob URL
+                    const blobUrl = URL.createObjectURL(blob);
+                    // Create a new anchor element
+                    const anchor = document.createElement('a');
+                    // Set the href and download attributes for the anchor element
+                    anchor.href = blobUrl;
+                    anchor.download = 'resume.pdf';
+                    // Simulate a click on the anchor element
+                    anchor.click();
+                    // Remove the anchor element from the DOM
+                    anchor.remove();
+                    // Revoke the blob URL
+                    URL.revokeObjectURL(blobUrl);
+                });
+
+            return ([
+                { text: `wget: `, color: 'text-green-400' },
+                { text: `${args[0]} `, color: 'text-white' },
+                { text: ` downloaded\n`, color: 'text-green-400' },
+            ])
+        }
+
         return (
             [
                 { text: `wget: `, color: 'text-red-400' },
