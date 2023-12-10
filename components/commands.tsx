@@ -102,9 +102,10 @@ export const commands: Record<string, Command> = {
         }
         if (args[0] == '..') {
             if (currentFolder.parent) {
+                setCurrentFolder(currentFolder.parent)
                 return (
                     [
-                        { text: 'cd ..', color: 'text-white' }
+                        { text: 'cd ..\n', color: 'text-white' }
                     ]
                 )
             }
