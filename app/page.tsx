@@ -1,12 +1,16 @@
 import Terminal from '@/components/Terminal';
 import Link from 'next/link'
+import Song from '@/components/music/Song'
 
 
 import { FaGithub, FaTwitter, FaFileAlt, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-8 sm:p-24">
+    <main className="flex min-h-screen flex-col justify-between items-center p-8 sm:p-24">
+      <div className="w-full flex flex-row items-start">
+        <Song />
+      </div>
       <div className='flex justify-center flex-col py-8 sm:py-0'>
         <h1 className="text-4xl font-bold text-center">
           Nicolas Patil
