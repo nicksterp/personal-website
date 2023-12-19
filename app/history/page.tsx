@@ -45,7 +45,7 @@ export default async function SongHistory() {
         <div className="flex min-h-screen flex-col space-y-5 items-center p-8 sm:p-24">
             <h1 className="text-xl">music i like</h1>
             <Link href="/" className="hover:underline text-gray-500">(back home)</Link>
-            <div className="border rounded-md md:w-[80%] w-[98%]">
+            <div className="border rounded-md md:w-[80%] w-[98%] overflow-hidden">
                 {history.map((song: Song, index: number) => (
                     <div key={song.id.toString()}>
                         <Link href={song.song_url}>
