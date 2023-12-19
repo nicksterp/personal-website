@@ -22,7 +22,7 @@ export default function Home() {
 
       <Terminal />
 
-      <a href='/info' className='font-medium text-blue-500 hover:underline'>Just want to see my info?</a>
+      <a href='/info' className='font-medium text-blue-500 hover:underline'>about me / projects</a>
 
       <div className="flex justify-center space-x-8 py-8 sm:py-0">
         <a href="https://github.com/nicksterp">
