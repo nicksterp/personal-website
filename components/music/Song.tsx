@@ -47,7 +47,7 @@ export default async function Song() {
                 <a href="/history" className="text-gray-500">(more)</a>
             </div>
             <Link href={song.song_url} target="_blank">
-                <div className="flex flex-row justify-center items-center border px-2 rounded-md hover-swipe">
+                <div className="flex flex-row group justify-center items-center border px-2 rounded-md hover-swipe">
                     <Image
                         alt="Song cover"
                         className="rounded-lg"
@@ -57,7 +57,7 @@ export default async function Song() {
                         style={imageStyle}
                     />
                     <div className="px-4 py-2">
-                        <h2 className="text-base font">{song.title}</h2>
+                        <h2 className="text-base group-hover:underline">{song.title}</h2>
                         <h3 className="text-sm text-gray-300">{song.artist}</h3>
                     </div>
                 </div>
