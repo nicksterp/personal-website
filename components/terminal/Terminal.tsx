@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Folder, rootFolder } from '@/components/fileTree';
-import { commands } from '@/components/commands';
+import { Folder, rootFolder } from '@/components/terminal/fileTree';
+import { commands } from '@/components/terminal/commands';
 
 export interface TextOutput {
     text: string,

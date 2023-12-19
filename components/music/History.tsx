@@ -1,4 +1,4 @@
-import Song from "@/components/music/types"
+import { Song } from "@/components/music/types"
 
 async function getHistory() {
     const MUSIC_API_URL = process.env.MUSIC_API_URL

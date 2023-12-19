@@ -1,4 +1,4 @@
-import { TextOutput } from '@/components/Terminal';
+import { TextOutput } from '@/components/terminal/Terminal';
 
 export interface Folder {
     parent: Folder | null,

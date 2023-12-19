@@ -1,5 +1,5 @@
-import { TextOutput, currentFolderSetter } from '@/components/Terminal'
-import { Folder, File } from '@/components/fileTree'
+import { TextOutput, currentFolderSetter } from '@/components/terminal/Terminal'
+import { Folder, File } from '@/components/terminal/fileTree'
 
 export interface Command {
     (args: string[], currentFolder: Folder, currentFolderSetter: (currentFolderSetter | void)): TextOutput[]

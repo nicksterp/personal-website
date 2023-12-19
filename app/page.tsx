@@ -1,4 +1,4 @@
-import Terminal from '@/components/Terminal';
+import Terminal from '@/components/terminal/Terminal';
 import Link from 'next/link'
 import Song from '@/components/music/Song'
 
