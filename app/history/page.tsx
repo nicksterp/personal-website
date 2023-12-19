@@ -47,8 +47,8 @@ export default async function SongHistory() {
             <Link href="/" className="hover:underline text-gray-500">(back home)</Link>
             <div className="border rounded-md md:w-[80%] w-[98%]">
                 {history.map((song: Song, index: number) => (
-                    <div>
-                        <Link href={song.song_url} key={song.id.toString()}>
+                    <div key={song.id.toString()}>
+                        <Link href={song.song_url}>
                             <div className="flex flex-row justify-start items-center hover-swipe py-5 px-5">
                                 <Image
                                     alt="Song cover"
