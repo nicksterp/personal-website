@@ -55,7 +55,7 @@ export default async function SongHistory() {
                                     width="50"
                                     src={song.image_url}
                                 />
-                                <div className="px-4 py-2 flex-grow">
+                                <div className="px-2 md:px-4 py-2 flex-grow">
                                     <h2 className="text-base font">{song.title}</h2>
                                     <h3 className="text-sm text-gray-300">{song.artist}</h3>
                                 </div>
