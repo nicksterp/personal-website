@@ -46,7 +46,7 @@ export default async function Song() {
                 <h1 className="text-base">song of the day</h1>
                 <a href="/history" className="text-gray-500">(more)</a>
             </div>
-            <Link href={song.song_url}>
+            <Link href={song.song_url} target="_blank">
                 <div className="flex flex-row justify-center items-center border px-2 rounded-md hover-swipe">
                     <Image
                         alt="Song cover"
