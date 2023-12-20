@@ -6,7 +6,7 @@ async function getHistory() {
     const MUSIC_API_URL = process.env.MUSIC_API_URL
 
     try {
-        const res = await fetch(MUSIC_API_URL + '/song/history')
+        const res = await fetch(MUSIC_API_URL + '/song/history', { next: { revalidate: 3600 } })
 
         if (!res.ok) {
             throw new Error('Failed to fetch data')
