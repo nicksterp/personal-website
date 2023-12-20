@@ -6,7 +6,7 @@ async function getSong() {
     const MUSIC_API_URL = process.env.MUSIC_API_URL
 
     try {
-        const res = await fetch(MUSIC_API_URL + '/song')
+        const res = await fetch(MUSIC_API_URL + '/song', { next: { revalidate: 3600 } })
 
         if (!res.ok) {
             throw new Error('Failed to fetch data')
@@ -30,8 +30,11 @@ async function getSong() {
         return null
     }
 }
+
+
 export default async function Song() {
     const song: Song | null = await getSong()
+
     if (song == null) {
         return (<></>)
     }
