@@ -47,7 +47,7 @@ export default async function Song() {
         <div className="flex flex-col items-center">
             <div className="flex flex-row justify-center items-end space-x-1">
                 <h1 className="text-base">song of the day</h1>
-                <a href="/history" className="text-gray-500">(more)</a>
+                <a href="/history" className="text-gray-500 hover:underline">(more)</a>
             </div>
             <Link href={song.song_url} target="_blank">
                 <div className="flex flex-row group justify-center items-center border px-2 rounded-md hover-swipe">
