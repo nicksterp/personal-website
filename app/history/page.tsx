@@ -25,6 +25,9 @@ async function getHistory() {
                 song_url: songData.song_url,
                 platform: songData.platform,
             }))
+
+        // Make certain that songs are displayed in the correct order (newest first)
+        songs.sort((a, b) => new Date(b.submitted_at).getTime() - new Date(a.submitted_at).getTime())
         return songs
 
     } catch (error) {
