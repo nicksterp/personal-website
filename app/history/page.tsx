@@ -15,16 +15,15 @@ async function getHistory() {
         const data = await res.json()
 
 
-        const songs: Song[] = data.map((songData: any) => (
-            {
-                id: songData.id,
-                title: songData.title,
-                artist: songData.artist,
-                image_url: songData.image_url,
-                submitted_at: new Date(songData.submitted_at).toLocaleString('en-US', { month: 'long', day: 'numeric' }),
-                song_url: songData.song_url,
-                platform: songData.platform,
-            }))
+        const songs: Song[] = data.map((songData: any) => ({
+            id: songData.id,
+            title: songData.title,
+            artist: songData.artist,
+            image_url: songData.image_url,
+            submitted_at: new Date(songData.submitted_at), // Convert to Date object here
+            song_url: songData.song_url,
+            platform: songData.platform,
+        }));
 
         // Make certain that songs are displayed in the correct order (newest first)
         songs.sort((a, b) => new Date(b.submitted_at).getTime() - new Date(a.submitted_at).getTime())
@@ -64,7 +63,7 @@ export default async function SongHistory() {
                                     <h2 className="text-base group-hover:underline">{song.title}</h2>
                                     <h3 className="text-sm text-gray-300">{song.artist}</h3>
                                 </div>
-                                <h2 className="ml-auto">{song.submitted_at}</h2>
+                                <h2 className="ml-auto">{new Date(song.submitted_at).toLocaleString('en-US', { month: 'long', day: 'numeric' })}</h2>
                             </div>
                         </Link>
                         {index < history.length - 1 && <hr className="border-t border-white" />}
